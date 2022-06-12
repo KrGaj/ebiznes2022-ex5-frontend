@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import {Products} from "./pages/Products";
+import {CartPage} from "./pages/Cart";
 
 function App() {
   return (
@@ -24,9 +25,11 @@ function App() {
         <BrowserRouter>
           <ul>
             <li><Link to={'/products'}>Produkty</Link></li>
+            <li><Link to={'/cart'}>Koszyk</Link></li>
           </ul>
           <Routes>
             <Route path="/products" element={<Products />}/>
+            <Route path="/cart" element={<CartPage />}/>
           </Routes>
         </BrowserRouter>
       </header>

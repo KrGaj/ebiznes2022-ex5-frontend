@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, Col, Container} from "react-bootstrap";
+import {Button, Card, Col} from "react-bootstrap";
 import {Product} from "../models/Product";
 import useCart from "../hooks/useCart";
 
@@ -8,19 +8,11 @@ export interface ProductProps {
 }
 
 export function ProductComponent(props: ProductProps) {
-    // constructor(props: ProductProps) {
-    //     super(props);
-    //
-    //     this.state = {
-    //         product: props.product
-    //     }
-    // }
-
     const { product } = props;
     const { addProduct } = useCart();
 
     return (
-        <Container fluid>
+        <div>
             <Col xs sm="1" >
 
             </Col>
@@ -34,6 +26,6 @@ export function ProductComponent(props: ProductProps) {
             <Col xs sm="3">
                 <Button onClick={() => addProduct(product)}>Dodaj do koszyka</Button>
             </Col>
-        </Container>
+        </div>
     );
 }

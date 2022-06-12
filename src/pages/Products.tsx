@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {fetchProducts} from "../api/products";
 import {Product} from "../models/Product";
-import {Row} from "react-bootstrap";
-import useCart from "../hooks/useCart";
+import {Container, Row} from "react-bootstrap";
 import {ProductComponent} from "../components/Product";
 
 export interface ProductProps extends React.ReactHTML {}
@@ -17,15 +16,17 @@ export const Products = () => {
     }, [])
 
     return (
-        <Row>
-            {products.map((product: Product) =>(
-                <ProductComponent key={product.id} product={product}/>
-                // <><p>{product.name}</p>
-                //     <button onClick={() => addProduct(product)}>Dodaj do koszyka</button>
-                // </>
-                )
-            )}
-        </Row>
+        <Container fluid>
+            <Row>
+                {products.map((product: Product) =>(
+                    <ProductComponent key={product.id} product={product}/>
+                    // <><p>{product.name}</p>
+                    //     <button onClick={() => addProduct(product)}>Dodaj do koszyka</button>
+                    // </>
+                    )
+                )}
+            </Row>
+        </Container>
 
     // <div>
     //     <div className="products">
