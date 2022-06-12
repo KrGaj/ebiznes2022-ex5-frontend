@@ -4,6 +4,10 @@ import {Product} from "../models/Product";
 function useCart() {
     const [ cart, setCart ] = useState<Product[]>([])
 
+    // function getCart() {
+    //
+    // }
+
     function addProduct(product: Product) {
         setCart([...cart, product]);
     }
@@ -18,3 +22,5 @@ function useCart() {
         removeProduct
     }
 }
+
+export default useCart
