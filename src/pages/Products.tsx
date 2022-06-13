@@ -10,8 +10,8 @@ export const Products = () => {
     const [ products, setProducts ] = useState<Product[]>([])
 
     useEffect(() => {
-        fetchProducts().then((product) => {
-            setProducts(product)
+        fetchProducts().then((foundProducts) => {
+            setProducts(foundProducts)
         })
     }, [])
 

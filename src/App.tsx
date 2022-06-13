@@ -5,6 +5,7 @@ import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import {Products} from "./pages/Products";
 import {CartPage} from "./pages/Cart";
 import {ShopContextProvider} from "./context/ShopContext";
+import {PaymentPage} from "./pages/Payment";
 
 function App() {
   return (
@@ -28,10 +29,12 @@ function App() {
             <ul>
               <li><Link to={'/products'}>Produkty</Link></li>
               <li><Link to={'/cart'}>Koszyk</Link></li>
+              <li><Link to={'/payments'}>Płatności</Link></li>
             </ul>
             <Routes>
               <Route path="/products" element={<Products />}/>
               <Route path="/cart" element={<CartPage />}/>
+              <Route path="/payment" element={<PaymentPage />}/>
             </Routes>
           </BrowserRouter>
         </ShopContextProvider>

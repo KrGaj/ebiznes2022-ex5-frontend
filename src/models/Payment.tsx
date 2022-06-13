@@ -1,7 +1,7 @@
 export interface Payment {
     id: string;
     method: string;
-    date: BigInt;
+    date: number;
     paid: boolean;
     user: number;
 }
