@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Product} from "../models/Product";
 import {CartProduct} from "../models/CartProduct";
 
@@ -7,11 +7,21 @@ function useCart() {
     const [ cart, setCart ] = useState<CartProduct[]>([])
     const [ localProductId, setLocalProductId ] = useState<number>(0)
 
+    useEffect(() => {
+        console.log("Cart changed. Now: " + cart)
+    }, [cart])
+
     function addProduct(product: Product) {
         let cartProducts = cart.filter(item => item.product.id === product.id);
 
         if(cartProducts.length === 0) {
-            setCart([...cart, {id: localProductId.toString(), product: product, quantity: 1}]);
+            const newProduct: CartProduct = {
+                id: localProductId.toString(),
+                product: product,
+                quantity: 1
+            }
+
+            setCart([...cart, newProduct]);
             setLocalProductId(localProductId + 1)
         }
         else {
@@ -33,8 +43,6 @@ function useCart() {
                 setCart([...products])
             }
         }
-
-        const products = cart.filter(item => item.product.id !== productId)
     }
 
     return {

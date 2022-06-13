@@ -8,3 +8,7 @@ export const fetchPaymentsByUserId = async (userId: number): Promise<Payment> =>
         }
     })
 }
+
+export const fetchAllPayments = async (): Promise<Payment> => {
+    return await axios.get("/payments/all")
+}

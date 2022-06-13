@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Button, Card, Col} from "react-bootstrap";
 import {Product} from "../models/Product";
-import useCart from "../hooks/useCart";
+import {ShopContext} from "../context/ShopContext";
 
 export interface ProductProps {
     product: Product
@@ -9,7 +9,7 @@ export interface ProductProps {
 
 export function ProductComponent(props: ProductProps) {
     const { product } = props;
-    const { addProduct } = useCart();
+    const { addProduct } = useContext(ShopContext);
 
     return (
         <div>
