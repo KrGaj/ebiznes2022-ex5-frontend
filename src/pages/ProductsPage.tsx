@@ -6,7 +6,7 @@ import {ProductComponent} from "../components/Product";
 
 export interface ProductProps extends React.ReactHTML {}
 
-export const Products = () => {
+export const ProductsPage = () => {
     const [ products, setProducts ] = useState<Product[]>([])
 
     useEffect(() => {
@@ -20,23 +20,9 @@ export const Products = () => {
             <Row>
                 {products.map((product: Product) =>(
                     <ProductComponent key={product.id} product={product}/>
-                    // <><p>{product.name}</p>
-                    //     <button onClick={() => addProduct(product)}>Dodaj do koszyka</button>
-                    // </>
                     )
                 )}
             </Row>
         </Container>
-
-    // <div>
-    //     <div className="products">
-    //         <ul>
-    //             {products.map((product: Product) => (<li>
-    //                 {product.name}
-    //                 <button onClick={() => addProduct(product)}>Dodaj do koszyka</button>
-    //             </li>))}
-    //         </ul>
-    //     </div>
-    // </div>
     )
 }
