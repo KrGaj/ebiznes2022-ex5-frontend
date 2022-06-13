@@ -1,3 +1,9 @@
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=krystian0120_ebiznes2022-ex5-frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=krystian0120_ebiznes2022-ex5-frontend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=krystian0120_ebiznes2022-ex5-frontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=krystian0120_ebiznes2022-ex5-frontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=krystian0120_ebiznes2022-ex5-frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=krystian0120_ebiznes2022-ex5-frontend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=krystian0120_ebiznes2022-ex5-frontend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=krystian0120_ebiznes2022-ex5-frontend)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
