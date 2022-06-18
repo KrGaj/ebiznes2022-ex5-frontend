@@ -1,5 +1,5 @@
-import {Payment} from "../models/Payment";
-import {Button, Card, Col} from "react-bootstrap";
+import { Payment } from "../models/Payment";
+import { Card, Col } from "react-bootstrap";
 import React from "react";
 
 export interface PaymentProps {

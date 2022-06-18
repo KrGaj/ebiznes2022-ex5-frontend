@@ -1,7 +1,7 @@
-import React, {useContext} from "react";
-import {Button, Card, Col} from "react-bootstrap";
-import {Product} from "../models/Product";
-import {ShopContext} from "../context/ShopContext";
+import React, { useContext } from "react";
+import { Button, Card, Col } from "react-bootstrap";
+import { Product } from "../models/Product";
+import { ShopContext } from "../context/ShopContext";
 
 export interface ProductProps {
     product: Product
