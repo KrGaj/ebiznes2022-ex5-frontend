@@ -13,6 +13,7 @@ function App() {
         <ShopContextProvider>
           <BrowserRouter>
             <ul>
+              <li><Link to={'/login/google'}/>Zaloguj się - Google</li>
               <li><Link to={'/products'}>Produkty</Link></li>
               <li><Link to={'/cart'}>Koszyk</Link></li>
               <li><Link to={'/payments'}>Płatności</Link></li>

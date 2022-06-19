@@ -5,4 +5,10 @@ export interface ShopContextState {
     cartProducts: CartProduct[];
     addProduct: (product: Product) => void;
     removeProduct: (productId: string) => void;
+
+    loggedIn: boolean;
+    userId: string;
+    logIn: (userId: string) => void;
+    logOut: () => void;
+    getLoginStatus: () => void;
 }
