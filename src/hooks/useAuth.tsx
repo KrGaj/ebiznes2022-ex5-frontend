@@ -1,6 +1,7 @@
-import {useEffect, useState} from "react";
-import {fetchLoginStatus} from "../api/auth";
-import { getCookie, setCookie, getCookies } from 'typescript-cookie';
+import { useEffect, useState } from "react";
+import { fetchLoginStatus } from "../api/auth";
+import { getCookie, getCookies } from 'typescript-cookie';
+import { AuthData } from "../models/AuthData";
 
 
 function useAuth() {
@@ -8,9 +9,22 @@ function useAuth() {
     const [ userId, setUserId ] = useState<string>("")
 
     useEffect(() => {
-        // console.log(getCookie("user_session"))
+        let cookie = getCookie("user_info")
+        if(cookie !== undefined) {
+            cookie = cookie.replace("UserSession(", "").replace(")", "")
+            const cookieArr = cookie.split(",+")
+            const cookieObj: AuthData = {
+                loggedIn: Boolean(cookieArr[0].replace("loggedIn=", "")),
+                userId: cookieArr[2].replace("userId=", ""),
+                accessToken: cookieArr[1].replace("accessToken=", "")
+            }
+            if(cookieObj.loggedIn) {
+                logIn(cookieObj.userId)
+                console.log("Logged in")
+            }
+        }
         console.log("User state changed: userId " + userId, " loggedIn " + loggedIn)
-    });
+    }, [loggedIn, userId]);
 
     function logIn(userId: string) {
         setUserId(userId)
