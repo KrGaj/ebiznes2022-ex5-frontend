@@ -10,6 +10,7 @@ export function LoginComponent() {
         <Row>
             <Col>
                 <Button onClick={ () => {navigateTo("/login/google")} }>Google</Button>
+                <Button onClick={ () => {navigateTo("/login/github")} }>Github</Button>
             </Col>
         </Row>
     )
