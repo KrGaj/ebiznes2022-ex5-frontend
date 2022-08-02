@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { fetchLoginStatus } from "../api/auth";
 import { getCookie, getCookies } from 'typescript-cookie';
 import { AuthData } from "../models/AuthData";
+import jwtDecode from "jwt-decode";
+import {TokenData} from "../models/TokenData";
 
 
 function useAuth() {
@@ -13,13 +15,23 @@ function useAuth() {
         if(cookie !== undefined) {
             cookie = cookie.replace("UserSession(", "").replace(")", "")
             const cookieArr = cookie.split(",+")
+            const loggedIn = Boolean(cookieArr[0].replace("loggedIn=", ""))
+            const accessToken = cookieArr[1].replace("accessToken=", "")
+
+            const userInfo: TokenData = jwtDecode(accessToken)
+
             const cookieObj: AuthData = {
-                loggedIn: Boolean(cookieArr[0].replace("loggedIn=", "")),
-                userId: cookieArr[2].replace("userId=", ""),
-                accessToken: cookieArr[1].replace("accessToken=", "")
+                loggedIn: loggedIn,
+                userId: userInfo.userId,
+                accessToken: accessToken,
+                username: userInfo.username,
+                email: userInfo.email
             }
             if(cookieObj.loggedIn) {
                 logIn(cookieObj.userId)
+                console.log("Id: " + cookieObj.userId)
+                console.log("Username: " + cookieObj.username)
+                console.log("Email: " + cookieObj.email)
                 console.log("Logged in")
             }
         }
