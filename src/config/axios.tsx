@@ -1,14 +1,18 @@
 import axiosFactory from "axios";
 import {environment} from "./environment";
 
-const axios = axiosFactory.create({
-    baseURL: environment.serverURL,
-    headers: {
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-    }
-})
+function axios(token: string) {
+    const axios = axiosFactory.create({
+        baseURL: environment.serverURL,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    })
 
-axios.interceptors.response.use(response => response.data)
+    axios.interceptors.response.use(response => response.data)
+
+    return axios
+}
 
 export default axios;

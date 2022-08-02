@@ -43,7 +43,7 @@ function useAuth() {
             }
         }
         console.log("User state changed: userId " + user.userId, " loggedIn " + user.loggedIn)
-    }, [user.loggedIn]);
+    }, [user.userId, user.loggedIn]);
 
     function logIn(user: AuthData) {
         setUser(user)
@@ -54,7 +54,7 @@ function useAuth() {
     }
 
     function getLoginStatus() {
-        fetchLoginStatus()
+        fetchLoginStatus("")
             .then((data) => {
                 // console.log("Get login status cookies")
                 // console.log(getCookies())
