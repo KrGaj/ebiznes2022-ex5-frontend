@@ -7,8 +7,15 @@ import {TokenData} from "../models/TokenData";
 
 
 function useAuth() {
-    const [ loggedIn, setLoggedIn ] = useState(false)
-    const [ userId, setUserId ] = useState<string>("")
+    const defaultAuthData = {
+        loggedIn: false,
+        accessToken: "",
+        userId: "",
+        email: "",
+        username: ""
+    }
+
+    const [ user, setUser ] = useState<AuthData>(defaultAuthData)
 
     useEffect(() => {
         let cookie = getCookie("user_info")
@@ -28,24 +35,22 @@ function useAuth() {
                 email: userInfo.email
             }
             if(cookieObj.loggedIn) {
-                logIn(cookieObj.userId)
+                logIn(cookieObj)
                 console.log("Id: " + cookieObj.userId)
                 console.log("Username: " + cookieObj.username)
                 console.log("Email: " + cookieObj.email)
                 console.log("Logged in")
             }
         }
-        console.log("User state changed: userId " + userId, " loggedIn " + loggedIn)
-    }, [loggedIn, userId]);
+        console.log("User state changed: userId " + user.userId, " loggedIn " + user.loggedIn)
+    }, [user.loggedIn]);
 
-    function logIn(userId: string) {
-        setUserId(userId)
-        setLoggedIn(true)
+    function logIn(user: AuthData) {
+        setUser(user)
     }
 
     function logOut() {
-        setUserId("")
-        setLoggedIn(false)
+        setUser(defaultAuthData)
     }
 
     function getLoginStatus() {
@@ -56,7 +61,7 @@ function useAuth() {
                 // console.log("Data")
                 // console.log(data)
                 if (data.loggedIn) {
-                    logIn(data.userId);
+                    logIn(data);
                 }
                 else {
                     logOut();
@@ -69,8 +74,7 @@ function useAuth() {
     }
 
     return {
-        loggedIn,
-        userId,
+        user,
         logIn,
         logOut,
         getLoginStatus

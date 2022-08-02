@@ -8,8 +8,13 @@ const defaultValue: ShopContextState = {
     addProduct: () => {},
     removeProduct: () => {},
 
-    loggedIn: false,
-    userId: "",
+    user: {
+        loggedIn: false,
+        accessToken: "",
+        userId: "",
+        username: "",
+        email: ""
+    },
     logIn: () => {},
     logOut: () => {},
     getLoginStatus: () => {}
@@ -19,15 +24,14 @@ export const ShopContext = React.createContext(defaultValue)
 
 export const ShopContextProvider: React.FC<{children: React.ReactElement}> = ({children}) => {
     const { cart, addProduct, removeProduct } = useCart();
-    const { loggedIn, userId, logIn, logOut, getLoginStatus } = useAuth();
+    const { user, logIn, logOut, getLoginStatus } = useAuth();
 
     const providerValue: ShopContextState = {
         cartProducts: cart,
         addProduct,
         removeProduct,
 
-        loggedIn,
-        userId,
+        user,
         logIn,
         logOut,
         getLoginStatus

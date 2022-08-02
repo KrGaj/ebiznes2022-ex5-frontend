@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 
 export function HomeComponent() {
-    const { loggedIn } = useContext(ShopContext)
+    const { user } = useContext(ShopContext)
 
-    if(loggedIn) {
+    if(user.loggedIn) {
         return (
             <div>
                 <h4>Zalogowany :)</h4>
