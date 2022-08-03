@@ -1,15 +1,17 @@
-import {Container, Row} from "react-bootstrap";
-import {CartComponent} from "../components/Cart";
-import {useContext} from "react";
-import {ShopContext} from "../context/ShopContext";
+import { Container, Row } from "react-bootstrap";
+import { CartComponent } from "../components/Cart";
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
+import useCart from "../hooks/useCart";
 
 export const CartPage = () => {
-    const { cartProducts } = useContext(ShopContext);
+    const { user } = useContext(ShopContext);
+    const { cart } = useCart(user)
 
     return (
         <Container fluid>
             <Row>
-                {cartProducts.map((cartProduct) => (
+                {cart.map((cartProduct) => (
                     <CartComponent key={cartProduct.id} cartProduct={cartProduct} />
                 ))}
             </Row>
