@@ -6,21 +6,27 @@ import {addToCart, fetchCartProducts} from "../api/cart";
 
 
 function useCart(user: AuthData) {
-    const [ cart, setCart ] = useState<CartProduct[]>([])
 
-    useEffect(() => {
-        fetchCartProducts(user).then((foundProducts) => {
-            setCart(foundProducts)
-        })
-    })
+    function useGetCart() {
+        const [ cart, setCart ] = useState<CartProduct[]>([])
+
+        useEffect(() => {
+            console.log("Cart user token: " + user.accessToken)
+            fetchCartProducts(user).then((foundProducts) => {
+                setCart(foundProducts)
+            })
+        }, [])
+
+        return cart
+    }
 
     function addProduct(product: Product) {
         addToCart(product, user)
     }
 
     return {
-        cart,
-        addProduct
+        addProduct,
+        useGetCart
     }
 }
 

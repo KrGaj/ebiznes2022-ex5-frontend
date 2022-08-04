@@ -4,7 +4,11 @@ import { CartProduct } from "../models/CartProduct";
 import { AuthData } from "../models/AuthData";
 
 export const fetchCartProducts = async (user: AuthData): Promise<CartProduct[]> => {
-    return axios(user.accessToken).get("/cart?user_id=" + user.userId)
+    return axios(user.accessToken).get("/cart", {
+        params: {
+            user_id: user.userId
+        }
+    })
 }
 
 export const addToCart = async (product: Product, user: AuthData): Promise<CartProduct[]> => {

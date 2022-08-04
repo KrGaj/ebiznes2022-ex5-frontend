@@ -10,6 +10,7 @@ export const PaymentPage = () => {
     const { user } = useContext(ShopContext)
 
     useEffect(() => {
+        console.log("Fetch payments")
         fetchAllPayments(user.accessToken).then((foundPayments) => {
             setPayments(foundPayments)
         })

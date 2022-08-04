@@ -6,7 +6,8 @@ import useCart from "../hooks/useCart";
 
 export const CartPage = () => {
     const { user } = useContext(ShopContext);
-    const { cart } = useCart(user)
+    const { useGetCart } = useCart(user)
+    const cart = useGetCart()
 
     return (
         <Container fluid>
