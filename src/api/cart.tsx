@@ -24,3 +24,7 @@ export const addToCart = async (product: Product, user: AuthData): Promise<CartP
 
     return axios(user.token).post("/cart", cartProduct)
 }
+
+export const removeFromCart = async (cartProduct: CartProduct, user: AuthData): Promise<CartProduct[]> => {
+    return axios(user.token).delete("/cart", {data: cartProduct})
+}
