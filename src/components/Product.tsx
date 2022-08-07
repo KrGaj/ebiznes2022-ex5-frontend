@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { Product } from "../models/Product";
 import { ShopContext } from "../context/ShopContext";
-import useCart from "../hooks/useCart";
+import {addToCart} from "../api/cart";
 
 export interface ProductProps {
     product: Product
@@ -11,7 +11,6 @@ export interface ProductProps {
 export function ProductComponent(props: ProductProps) {
     const { product } = props;
     const { user } = useContext(ShopContext);
-    const { addProduct } = useCart(user);
 
     return (
         <div>
@@ -26,7 +25,7 @@ export function ProductComponent(props: ProductProps) {
             </Col>
 
             <Col xs sm="3">
-                <Button onClick={() => addProduct(product)}>Dodaj do koszyka</Button>
+                <Button onClick={() => addToCart(product, user)}>Dodaj do koszyka</Button>
             </Col>
         </div>
     );
