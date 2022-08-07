@@ -11,10 +11,10 @@ export const PaymentPage = () => {
 
     useEffect(() => {
         console.log("Fetch payments")
-        fetchAllPayments(user.accessToken).then((foundPayments) => {
+        fetchAllPayments(user.token).then((foundPayments) => {
             setPayments(foundPayments)
         })
-    }, [user.accessToken])
+    }, [user.token])
 
     return (
         <Container fluid>

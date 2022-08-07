@@ -4,7 +4,7 @@ import { CartProduct } from "../models/CartProduct";
 import { AuthData } from "../models/AuthData";
 
 export const fetchCartProducts = async (user: AuthData): Promise<CartProduct[]> => {
-    return axios(user.accessToken).get("/cart", {
+    return axios(user.token).get("/cart", {
         params: {
             user_id: user.userId
         }
@@ -22,5 +22,5 @@ export const addToCart = async (product: Product, user: AuthData): Promise<CartP
         amount: 1
     }
 
-    return axios(user.accessToken).post("/cart", cartProduct)
+    return axios(user.token).post("/cart", cartProduct)
 }

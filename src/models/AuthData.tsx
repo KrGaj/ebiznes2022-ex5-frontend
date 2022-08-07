@@ -1,6 +1,6 @@
 export interface AuthData {
     loggedIn: boolean;
-    accessToken: string;
+    token: string;
     userId: string;
     email: string,
     username: string

@@ -8,7 +8,7 @@ import { TokenData } from "../models/TokenData";
 function useAuth() {
     const defaultAuthData = {
         loggedIn: false,
-        accessToken: "",
+        token: "",
         userId: "",
         email: "",
         username: ""
@@ -29,12 +29,12 @@ function useAuth() {
             const cookieObj: AuthData = {
                 loggedIn: loggedIn,
                 userId: userInfo.userId,
-                accessToken: accessToken,
+                token: accessToken,
                 username: userInfo.username,
                 email: userInfo.email
             }
             if(cookieObj.loggedIn) {
-                logIn(cookieObj)
+                setUser(cookieObj)
                 console.log("Id: " + cookieObj.userId)
                 console.log("Username: " + cookieObj.username)
                 console.log("Email: " + cookieObj.email)
@@ -44,17 +44,12 @@ function useAuth() {
         console.log("User state changed: userId " + user.userId, " loggedIn " + user.loggedIn)
     }, [user.userId, user.loggedIn]);
 
-    function logIn(user: AuthData) {
-        setUser(user)
-    }
-
     function logOut() {
         setUser(defaultAuthData)
     }
 
     return {
         user,
-        logIn,
         logOut
     }
 }

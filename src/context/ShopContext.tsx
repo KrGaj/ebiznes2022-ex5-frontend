@@ -5,23 +5,21 @@ import useAuth from "../hooks/useAuth";
 const defaultValue: ShopContextState = {
     user: {
         loggedIn: false,
-        accessToken: "",
+        token: "",
         userId: "",
         username: "",
         email: ""
     },
-    logIn: () => {},
-    logOut: () => {}
+    logOut: Function
 }
 
 export const ShopContext = React.createContext(defaultValue)
 
 export const ShopContextProvider: React.FC<{children: React.ReactElement}> = ({children}) => {
-    const { user, logIn, logOut } = useAuth();
+    const { user, logOut } = useAuth();
 
     const providerValue: ShopContextState = {
         user,
-        logIn,
         logOut
     }
 
