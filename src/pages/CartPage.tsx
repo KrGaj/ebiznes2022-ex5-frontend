@@ -1,13 +1,20 @@
 import { Container, Row } from "react-bootstrap";
 import { CartComponent } from "../components/Cart";
-import { useContext } from "react";
+import {useContext, useEffect, useState} from "react";
 import { ShopContext } from "../context/ShopContext";
-import useCart from "../hooks/useCart";
+import {fetchCartProducts} from "../api/cart";
+import {CartProduct} from "../models/CartProduct";
 
 export const CartPage = () => {
     const { user } = useContext(ShopContext);
-    const { useGetCart } = useCart(user)
-    const cart = useGetCart()
+    const [ cart, setCart ] = useState<CartProduct[]>([])
+
+    useEffect(() => {
+        fetchCartProducts(user)
+            .then((foundProducts) => {
+                setCart(foundProducts)
+            })
+    }, [user])
 
     return (
         <Container fluid>

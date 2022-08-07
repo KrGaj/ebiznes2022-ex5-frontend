@@ -11,20 +11,18 @@ const defaultValue: ShopContextState = {
         email: ""
     },
     logIn: () => {},
-    logOut: () => {},
-    getLoginStatus: () => {}
+    logOut: () => {}
 }
 
 export const ShopContext = React.createContext(defaultValue)
 
 export const ShopContextProvider: React.FC<{children: React.ReactElement}> = ({children}) => {
-    const { user, logIn, logOut, getLoginStatus } = useAuth();
+    const { user, logIn, logOut } = useAuth();
 
     const providerValue: ShopContextState = {
         user,
         logIn,
-        logOut,
-        getLoginStatus
+        logOut
     }
 
     return (

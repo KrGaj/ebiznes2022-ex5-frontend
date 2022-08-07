@@ -4,5 +4,4 @@ export interface ShopContextState {
     user: AuthData;
     logIn: (user: AuthData) => void;
     logOut: () => void;
-    getLoginStatus: () => void;
 }

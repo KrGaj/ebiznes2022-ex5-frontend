@@ -12,6 +12,7 @@ export function LoginComponent() {
                 <Button onClick={ () => {navigateTo("/login/google")} }>Google</Button>
                 <Button onClick={ () => {navigateTo("/login/github")} }>GitHub</Button>
                 <Button onClick={ () => {navigateTo("/login/gitlab")} }>GitLab</Button>
+                <Button onClick={ () => {navigateTo("/login/facebook")} }>Facebook</Button>
             </Col>
         </Row>
     )

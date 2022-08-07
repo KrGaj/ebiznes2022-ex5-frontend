@@ -5,7 +5,6 @@ function axios(token: string) {
     const axios = axiosFactory.create({
         baseURL: environment.serverURL,
         headers: {
-            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token
         }

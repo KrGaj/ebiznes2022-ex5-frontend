@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchLoginStatus } from "../api/auth";
-import { getCookie, getCookies } from 'typescript-cookie';
+import { getCookie } from 'typescript-cookie';
 import { AuthData } from "../models/AuthData";
 import jwtDecode from "jwt-decode";
-import {TokenData} from "../models/TokenData";
+import { TokenData } from "../models/TokenData";
 
 
 function useAuth() {
@@ -53,31 +52,10 @@ function useAuth() {
         setUser(defaultAuthData)
     }
 
-    function getLoginStatus() {
-        fetchLoginStatus("")
-            .then((data) => {
-                // console.log("Get login status cookies")
-                // console.log(getCookies())
-                // console.log("Data")
-                // console.log(data)
-                if (data.loggedIn) {
-                    logIn(data);
-                }
-                else {
-                    logOut();
-                }
-            })
-
-        // const userId = localStorage.getItem("userId")
-        console.log(getCookie("user_info"))
-        console.log(getCookies())
-    }
-
     return {
         user,
         logIn,
-        logOut,
-        getLoginStatus
+        logOut
     }
 }
 
