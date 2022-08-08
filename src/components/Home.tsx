@@ -2,19 +2,20 @@ import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 
 export function HomeComponent() {
-    const { loggedIn } = useContext(ShopContext)
+    const { user } = useContext(ShopContext)
+    const style = {color: 'white'}
 
-    if(loggedIn) {
+    if(user.loggedIn) {
         return (
             <div>
-                <h4>Zalogowany :)</h4>
+                <h4 style={style}>Witaj, {user.username}, rozgość się :)</h4>
             </div>
         )
     }
     else {
         return (
             <div>
-                <h4>Niezalogowany :(</h4>
+                <h4 style={style}>Witaj, zaloguj się, proszę :)</h4>
             </div>
         )
     }

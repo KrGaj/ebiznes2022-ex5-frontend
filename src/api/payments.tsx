@@ -1,14 +1,11 @@
-import {Payment} from "../models/Payment";
+import { Payment } from "../models/Payment";
 import axios from "../config/axios";
+import { AuthData } from "../models/AuthData";
 
-export const fetchPaymentsByUserId = async (userId: number): Promise<Payment[]> => {
-    return axios.get("/payments/by_user", {
-        params: {
-            user_id: userId
-        }
-    })
+export const fetchPaymentsByUserId = async (user: AuthData): Promise<Payment[]> => {
+    return axios(user.token).get("/payments/by_user?user_id=" + user.userId)
 }
 
-export const fetchAllPayments = async (): Promise<Payment[]> => {
-    return axios.get("/payments/all")
+export const fetchAllPayments = async (token: string): Promise<Payment[]> => {
+    return axios(token).get("/payments/all")
 }
