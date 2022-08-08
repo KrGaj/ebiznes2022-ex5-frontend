@@ -2,7 +2,7 @@ import axiosFactory from "axios";
 import {environment} from "./environment";
 
 function axios(token: string) {
-    const axios = axiosFactory.create({
+    const axiosObj = axiosFactory.create({
         baseURL: environment.serverURL,
         headers: {
             "Content-Type": "application/json",
@@ -10,9 +10,9 @@ function axios(token: string) {
         }
     })
 
-    axios.interceptors.response.use(response => response.data)
+    axiosObj.interceptors.response.use(response => response.data)
 
-    return axios
+    return axiosObj
 }
 
 export default axios;
