@@ -1,14 +1,12 @@
 import useAuth from "../hooks/useAuth";
 import { Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
-import { removeCookie } from "typescript-cookie";
 
 export const LogoutPage = () => {
     const { logOut } = useAuth()
-    const style = {color: 'white'}
+    const style = { color: 'white' }
 
     useEffect(() => {
-        removeCookie("user_info")
         logOut()
     }, [logOut])
 
