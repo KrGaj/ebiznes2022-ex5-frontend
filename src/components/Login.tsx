@@ -6,23 +6,31 @@ export function navigateTo(url: string) {
 }
 
 export function LoginComponent() {
+    const style = {color: 'white'}
+
     return (
-        <Row>
-            <Col>
-                <Button onClick={ () => {navigateTo("/login/google")} }>Google</Button>
-            </Col>
+        <div>
+            <Row>
+                <h2 style={style}>Wybierz sposób logowania</h2>
+            </Row>
 
-            <Col>
-                <Button onClick={ () => {navigateTo("/login/github")} }>GitHub</Button>
-            </Col>
+            <Row>
+                <Col>
+                    <Button onClick={ () => {navigateTo("/login/google")} }>Google</Button>
+                </Col>
 
-            <Col>
-                <Button onClick={ () => {navigateTo("/login/gitlab")} }>GitLab</Button>
-            </Col>
+                <Col>
+                    <Button onClick={ () => {navigateTo("/login/github")} }>GitHub</Button>
+                </Col>
 
-            <Col>
-                <Button onClick={ () => {navigateTo("/login/facebook")} }>Facebook</Button>
-            </Col>
-        </Row>
+                <Col>
+                    <Button onClick={ () => {navigateTo("/login/gitlab")} }>GitLab</Button>
+                </Col>
+
+                <Col>
+                    <Button onClick={ () => {navigateTo("/login/facebook")} }>Facebook</Button>
+                </Col>
+            </Row>
+        </div>
     )
 }
