@@ -16,22 +16,35 @@ export const StripePaymentPage = () => {
     const [ options, setOptions ] = useState({
         clientSecret: ""
     })
+    const [ isLoading, setIsLoading ] = useState(true)
 
     useEffect(() => {
-        getStripeSecret(user.token, amount ? parseInt(amount) : 1)
-            .then((data) => {
-                setOptions({
-                    clientSecret: data.clientSecret
+        if(isLoading) {
+            getStripeSecret(user.token, amount ? parseInt(amount) : 1)
+                .then((data) => {
+                    setOptions({
+                        clientSecret: data.clientSecret
+                    })
+                    setIsLoading(false)
                 })
-            })
-    })
+        }
+    }, [amount, isLoading, user.token])
 
-    return (
-        <div>
-            <h2 style={style}>Zapłać za swoje zamówienie</h2>
-            <Elements stripe={stripePromise} options={options}>
-                <CheckoutForm user={user} />
-            </Elements>
-        </div>
-    )
+    if(options.clientSecret === "") {
+        return (
+            <div>
+                <h2 style={style}>Proszę czekać...</h2>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div>
+                <h2 style={style}>Zapłać za swoje zamówienie</h2>
+                <Elements stripe={stripePromise} options={options}>
+                    <CheckoutForm user={user}/>
+                </Elements>
+            </div>
+        )
+    }
 }

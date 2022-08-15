@@ -32,7 +32,7 @@ function App() {
                   <Route path="payments" element={<PaymentPage />} />
                   <Route path="logout" element={<LogoutPage />} />
                   <Route path="order_finished" element={<OrderFinishedPage />} />
-                  <Route path="pay" element={<StripePaymentPage />} />
+                  <Route path="pay/:amount" element={<StripePaymentPage />} />
                 </Routes>
               </BrowserRouter>
             </main>

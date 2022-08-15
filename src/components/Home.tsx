@@ -15,7 +15,7 @@ export function HomeComponent() {
     else {
         return (
             <div>
-                <h4 style={style}>Witaj, zaloguj się, proszę :)</h4>
+                <h4 style={style}>Witaj. Zaloguj się, proszę :)</h4>
             </div>
         )
     }

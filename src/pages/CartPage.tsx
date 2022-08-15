@@ -4,9 +4,10 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { fetchCartProducts } from "../api/cart";
 import { CartProduct } from "../models/CartProduct";
-import { navigateTo } from "../components/Login";
+import { useNavigate } from "react-router-dom";
 
 export const CartPage = () => {
+    const navigate = useNavigate()
     const { user } = useContext(ShopContext);
     const [ cart, setCart ] = useState<CartProduct[]>([])
     const [ cartSum, setCartSum ] = useState(0)
@@ -17,11 +18,13 @@ export const CartPage = () => {
             .then((foundProducts) => {
                 setCart(foundProducts)
 
-                foundProducts.forEach(product => {
-                    setCartSum(cartSum + product.amount * product.product.price)
+                foundProducts.forEach(_ => {
+                    setCartSum(foundProducts.reduce((previousValue, currentValue) => {
+                        return previousValue + currentValue.product.price * currentValue.amount
+                    }, 0))
                 })
             })
-    }, [cartSum, user])
+    }, [user])
 
     return (
         <Container fluid>
@@ -30,11 +33,11 @@ export const CartPage = () => {
             ))}
 
             <Row>
-                <h4 style={style}>Razem: ${cartSum}</h4>
+                <h4 style={style}>Razem: {cartSum}</h4>
             </Row>
 
             <Row>
-                {cart.length > 0 ? <Button onClick={() => navigateTo(`/pay/${cartSum}`)}>Zamów</Button> : null}
+                {cart.length > 0 ? <Button onClick={() => navigate(`/pay/${cartSum}`)}>Zamów</Button> : null}
             </Row>
         </Container>
     );

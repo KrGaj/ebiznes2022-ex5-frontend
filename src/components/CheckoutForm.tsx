@@ -17,6 +17,7 @@ export const CheckoutForm = (props: CheckoutFormProps) => {
     const [ errorMessage, setErrorMessage ] = useState<String>("");
 
     const samplePayment: Payment = {
+        id: "",
         method: "card",
         date: Date.now(),
         paid: true,
