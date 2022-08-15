@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCookie } from 'typescript-cookie';
+import {getCookie, removeCookie} from 'typescript-cookie';
 import { AuthData } from "../models/AuthData";
 import jwtDecode from "jwt-decode";
 import { TokenData } from "../models/TokenData";
@@ -45,6 +45,7 @@ function useAuth() {
     }, [user.userId, user.loggedIn]);
 
     function logOut() {
+        removeCookie("user_info")
         setUser(defaultAuthData)
     }
 

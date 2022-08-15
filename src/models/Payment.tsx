@@ -3,5 +3,7 @@ export interface Payment {
     method: string;
     date: number;
     paid: boolean;
-    user: number;
+    user: {
+        id: String
+    };
 }

@@ -1,4 +1,4 @@
-import {Button, Card, Col} from "react-bootstrap";
+import {Button, Card, Col, Row} from "react-bootstrap";
 import React from "react";
 import { CartProduct } from "../models/CartProduct";
 import {removeFromCart} from "../api/cart";
@@ -13,7 +13,7 @@ export function CartComponent(props: CartProps) {
     const { user, cartProduct } = props;
 
     return (
-        <div>
+        <Row>
             <Card>
                 <Col xs sm="1" >
 
@@ -28,6 +28,6 @@ export function CartComponent(props: CartProps) {
                     <Button onClick={() => removeFromCart(cartProduct, user)}>Usuń z koszyka</Button>
                 </Col>
             </Card>
-        </div>
+        </Row>
     );
 }
