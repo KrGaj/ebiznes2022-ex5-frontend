@@ -1,9 +1,9 @@
 export interface Purchase {
     user: {
-        id: String
+        id: string
     },
-    cashSum: Number,
+    cashSum: number,
     payment: {
-        id: String
+        id: string
     }
 }

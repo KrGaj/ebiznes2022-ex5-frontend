@@ -4,6 +4,6 @@ export interface Payment {
     date: number;
     paid: boolean;
     user: {
-        id: String
+        id: string
     };
 }

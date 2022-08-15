@@ -14,7 +14,7 @@ export const CheckoutForm = (props: CheckoutFormProps) => {
     const { user } = props
     const stripe = useStripe()
     const elements = useElements()
-    const [ errorMessage, setErrorMessage ] = useState<String>("");
+    const [ errorMessage, setErrorMessage ] = useState<string>("");
 
     const samplePayment: Payment = {
         id: "",
